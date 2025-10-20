@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Producto Interactivo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        div.bg-secondary {
+            border-radius: 20px;
+        }
+
+        p {
+            font-family: 'Arial', sans-serif;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        #open-modal,
+        #open-modal-two,
+        #open-modal-three {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #81b4ea;
+            border: none;
+            border-radius: 5px;
+        }
+
+        #open-modal:hover,
+        #open-modal-two:hover,
+        #open-modal-three:hover {
+            background-color: #5a92d1;
+            transition: 0.2s;
+        }
+
+        .modal,
+        .modal-two,
+        .modal-three {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+
+        #modal-content,
+        #modal-content-two,
+        #modal-content-three {
+            background-color: #fefefe;
+            margin: 5%;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            height: 80%;
+            border-radius: 10px;
+            text-align: justify;
+            padding: 3rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .close,
+        .closeTwo,
+        .closeThree {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus,
+        .closeTwo:hover,
+        .closeTwo:focus,
+        .closeThree:hover,
+        .closeThree:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #galeria {
+            overflow: auto;
+            /* Habilita el scroll si es necesario */
+            white-space: nowrap;
+            /* Evita que las imágenes se envuelvan */
+            padding: 5px;
+            /* Espacio interno */
+            scrollbar-color: transparent transparent;
+            /* Color del scrollbar transparente */
+        }
+
+        #modal-content-three img {
+            width: 40%;
+            /* Ancho fijo para las imágenes */
+            height: auto;
+            object-fit: contain;
+            /* Mantiene la proporción de la imagen */
+            margin: 10px;
+            /* Espacio entre las imágenes */
+            border-radius: 10px;
+            /* Bordes redondeados */
+            box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+            /* Sombra para dar profundidad */
+            transition: transform 0.3s;
+            /* Suaviza la transición del efecto hover */
+        }
+    </style>
+
+</head>
+
+<body onload="update()">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 alert alert-info text-center mt-3">
+                <!--mt-3 agrega un margen superior de 3 (entre 0 y 5)-->
+                <h1>El camino de los reyes</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 bg-secondary p-3">
+                <img src="https://m.media-amazon.com/images/I/91jOSMOea0L.jpg" alt="Libro El camino de los reyes">
+            </div>
+            <div class="col-lg-8 bg-light" style="padding-left: 3rem; text-align: justify;">
+                <p>"El camino de los reyes", primera entrega de la saga El Archivo de las Tormentas de Brandon
+                    Sanderson, es una obra monumental de fantasía épica que sumerge al lector en el mundo de Roshar, un
+                    planeta asolado por tormentas colosales y habitado por culturas complejas y criaturas únicas. En
+                    este escenario hostil, la humanidad lucha por sobrevivir mientras las leyendas de los míticos
+                    Caballeros Radiantes, guerreros de poderes sobrenaturales, comienzan a resurgir. La historia se
+                    entrelaza a través de tres protagonistas principales: Kaladin un antiguo soldado traicionado y
+                    convertido en esclavo, que encuentra un nuevo propósito liderando a un escuadrón de desechados;
+                    Dalinar Kholin un noble atormentado por visiones proféticas que lo empujan a cuestionar el
+                    honor y la política de su reino; y Shallan Davar una joven noble que busca salvar a su familia
+                    a través del engaño, mientras descubre un poder oculto dentro de sí misma.
+
+                    La novela destaca por su profundo desarrollo de personajes, su sistema de magia meticulosamente
+                    estructurado —basado en la manipulación de fuerzas naturales llamadas "Surges"— y su exploración de
+                    temas como el sacrificio, la lealtad, la identidad y la lucha interna entre el deber y el deseo. A
+                    través de una narrativa rica en detalles, con flashbacks que revelan el pasado de los personajes y
+                    visiones que anticipan un futuro apocalíptico, Sanderson construye una historia que no solo
+                    entretiene, sino que también invita a la reflexión sobre lo que significa ser verdaderamente
+                    honorable en un mundo roto. El camino de los reyes es una obra que marca el inicio de una de las
+                    sagas más ambiciosas y aclamadas de la fantasía moderna.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 alert alert-warning text-center mt-3">
+                <h2>29.99€</h2>
+            </div>
+        </div>
+        <button id="open-modal">Ver más</button> <!--Botón primario de Bootstrap-->
+        <div id="modal-window" class="modal"> <!--Ventana modal oculta por defecto que da sombra-->
+            <div id="modal-content">
+                <span class="close">&times;</span>
+                <h3>El archivo de las tormentas</h3>
+                <p>Descubre una de las sagas de fantasía más épicas y aclamadas del siglo XXI.
+                    El Archivo de las Tormentas es una obra maestra de Brandon Sanderson que redefine el género
+                    fantástico con una combinación única de acción, profundidad emocional y un mundo completamente
+                    original. Ambientada en Roshar, un planeta azotado por tormentas sobrenaturales y habitado por
+                    culturas fascinantes, esta saga te sumerge en una historia de héroes caídos, juramentos sagrados
+                    y poderes legendarios que resurgen cuando el mundo más los necesita.
+                    Desde el esclavo que desafía su destino hasta el noble que lucha por restaurar el honor en un
+                    reino dividido, cada personaje está magistralmente construido y evoluciona a lo largo de una
+                    trama rica en giros, revelaciones y momentos inolvidables. Con un sistema de magia lógico y
+                    visualmente espectacular, batallas épicas y reflexiones profundas sobre el deber, la verdad y el
+                    sacrificio, esta saga es ideal para lectores de El Señor de los Anillos, Canción de Hielo y
+                    Fuego o La Rueda del Tiempo.
+                    ¿Por qué leerlo?
+
+                    Mundo original y detallado: Roshar es un universo vivo, con historia, mitología y culturas
+                    únicas.
+                    Personajes inolvidables: Kaladin, Shallan, Dalinar y muchos más te marcarán para siempre.
+                    Magia con reglas claras: Poderes que evolucionan con los personajes y sus decisiones.
+                    Ideal para coleccionistas: Ediciones en tapa dura, ilustraciones y mapas incluidos en muchas
+                    versiones.
+
+                    Empieza con El camino de los reyes y prepárate para una aventura que cambiará tu forma de ver la
+                    fantasía.</p>
+            </div>
+        </div>
+        <button id="open-modal-two">Comprar</button>
+        <div id="modal-window-two" class="modal-two"> <!--Ventana modal oculta por defecto que da sombra-->
+            <div id="modal-content-two">
+                <span class="closeTwo">&times;</span>
+                <form id="formulario">
+                    <div class="col-lg-12 w-100" style="text-align: center; font-size: 2rem;">
+                        <label for="formulario">Rellena los datos</label><br>
+                    </div>
+                    <label for="item" style="display: block;">Producto</label>
+                    <input type="text" id="item" name="elemento" placeholder="Libro" required><br><br>
+                    <button type="button" onclick="agregarItem()">Añadir</button>
+                    <button type="button" onclick="eliminarItem()">Eliminar</button>
+                    <button type="button" onclick="eliminarUltimo()">Eliminar último</button>
+                    <button type="button" onclick="eliminarTodos()">Eliminar todos</button>
+                    <br><br>
+                </form>
+                <p>Lista de libros:</p>
+                <ul id="lista">
+
+                </ul>
+                <div class="col-lg-12 w-100" style="text-align: left;">
+                    <label for="coment">Comentarios</label><br>
+                    <textarea name="comentario" id="coment" rows="6" style="resize: none; width: 80%;"></textarea>
+                </div>
+            </div>
+        </div>
+        <button id="open-modal-three">Otros libros de la saga</button>
+        <div id="modal-window-three" class="modal-three">
+            <div id="modal-content-three">
+                <span class="closeThree">&times;</span>
+                <div id="galeria">
+                    <img src="https://m.media-amazon.com/images/I/91jOSMOea0L.jpg" alt="El camino de los reyes">
+                    <img src="https://m.media-amazon.com/images/I/81LBim3i3HL.jpg" alt="Palabras radiantes">
+                    <img src="https://m.media-amazon.com/images/I/91aS6KfXULL.jpg" alt="Juramentada">
+                    <img src="https://m.media-amazon.com/images/I/81AlZiJFtUL.jpg" alt="El ritmo de la guerra">
+                    <img src="https://dam.elcorteingles.es/producto/www-001006524331466-00.jpg?impolicy=Resize&width=1200&height=1200"
+                        alt="Viento y verdad">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        const modal = document.getElementById("modal-window");
+        const openModalBtn = document.getElementById("open-modal");
+        const closeModalSpan = document.querySelector(".close");
+
+        function openModal() {
+            modal.style.display = "flex";
+        }
+
+        function closeModal() {
+            modal.style.display = "none";
+        }
+
+        openModalBtn.addEventListener("click", openModal);
+        closeModalSpan.addEventListener("click", closeModal);
+        window.addEventListener("click", (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        const modalTwo = document.getElementById("modal-window-two");
+        const openModalBtnTwo = document.getElementById("open-modal-two");
+        const closeModalSpanTwo = document.querySelector(".closeTwo");
+
+        function openModalTwo() {
+            modalTwo.style.display = "flex";
+        }
+
+        function closeModalTwo() {
+            modalTwo.style.display = "none";
+        }
+
+        openModalBtnTwo.addEventListener("click", openModalTwo);
+        closeModalSpanTwo.addEventListener("click", closeModalTwo);
+        window.addEventListener("click", (event) => {
+            if (event.target === modalTwo) {
+                closeModalTwo();
+            }
+        });
+
+        const modalThree = document.getElementById("modal-window-three");
+        const openModalBtnThree = document.getElementById("open-modal-three");
+        const closeModalSpanThree = document.querySelector(".closeThree");
+
+        function openModalThree() {
+            modalThree.style.display = "flex";
+        }
+
+        function closeModalThree() {
+            modalThree.style.display = "none";
+        }
+
+        openModalBtnThree.addEventListener("click", openModalThree);
+        closeModalSpanThree.addEventListener("click", closeModalThree);
+        window.addEventListener("click", (event) => {
+            if (event.target === modalThree) {
+                closeModalThree();
+            }
+        });
+
+
+
+        let listaCompra = [];
+
+        function agregarItem() {
+            let nuevoItem = document.getElementById("item").value;
+            if (nuevoItem) {
+                listaCompra.push(nuevoItem);
+                document.getElementById("item").value = ""; // Limpiar el campo de entrada
+                update();
+            }
+        }
+
+        function update() {
+            const lista = document.getElementById("lista");
+            lista.innerHTML = ""; // Limpiar la lista antes de actualizar
+            for (let i = 0; i < listaCompra.length; i++) {
+                let item = document.createElement("li"); // Crear un nuevo elemento de lista
+                item.textContent = listaCompra[i]; // Establecer el texto del elemento de lista
+                lista.appendChild(item);  // Agregar el elemento de lista a la lista en el DOM
+            }
+        }
+
+        function eliminarItem() {
+            let itemAEliminar = document.getElementById("item").value;
+            const index = listaCompra.indexOf(itemAEliminar);
+            if (index > -1) {
+                listaCompra.splice(index, 1);
+                document.getElementById("item").value = ""; // Limpiar el campo de entrada
+                update();
+            }
+        }
+
+        function eliminarUltimo() {
+            listaCompra.pop();
+            update();
+        }
+
+        function eliminarTodos() {
+            listaCompra = [];
+            update();
+        }
+    </script>
+</body>
+
+</html>
